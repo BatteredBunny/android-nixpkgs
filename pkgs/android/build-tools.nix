@@ -30,7 +30,7 @@ mkGeneric (lib.optionalAttrs stdenv.isLinux {
   ];
 
   postUnpack = ''
-    for f in apksigner d8 lld; do
+    for f in apksigner d8; do
       substituteInPlace "$out/$f" --replace "/bin/ls" "ls"
       wrapProgram "$out/$f" --set PATH ${lib.makeBinPath [coreutils jdk]}
     done
